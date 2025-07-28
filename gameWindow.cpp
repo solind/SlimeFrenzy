@@ -600,8 +600,6 @@ int main(){
                 PlaySound(killSound);
             }
             if(boss.swordDamage(sword)){
-                slimesKilled+=10;
-                totalSlimesKilled+=10;
                 PlaySound(killSound);
             }
         }
@@ -682,7 +680,7 @@ int main(){
             boss.moveBalls();
         }
 
-        if(totalSlimesKilled==(int)(10*(1.0/1.8*std::pow(player.level,2))) && slimesKilled!=0){
+        if(totalSlimesKilled>=(int)(10*(1.0/1.8*std::pow(player.level,2))) && slimesKilled!=0){
             player.levelUp();
             sword.levelUp();
             PlaySound(levelUpSound);
@@ -727,6 +725,12 @@ int main(){
                 playDie=false;
             }
             if(IsKeyPressed(KEY_R)){
+            slimesKilled+=10;
+            totalSlimesKilled+=10;
+            if(totalSlimesKilled>=(int)(10*(1.0/1.8*std::pow(player.level,2))) && slimesKilled!=0){
+            player.levelUp();
+            sword.levelUp();
+            }
             playDie = true;
             paused = false;
             guild = true;
