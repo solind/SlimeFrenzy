@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include <random>
-#include<vector>
+#include <vector>
 
 class movingThing{
     public:
